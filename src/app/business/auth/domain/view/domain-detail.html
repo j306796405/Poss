@@ -1,0 +1,73 @@
+<form name="domainDetailForm" class="form-horizontal" parsley-validate>
+<div class="row">
+
+  <!-- domain basic info -->
+  <div class="col-md-6" style="padding-right: 30px;">
+
+    <h4 style="text-align: center; margin-bottom: 25px;">域基本信息</h4>
+
+    <div class="form-group">
+      <label class="col-md-3 control-label">域编码</label>
+      <div class="col-md-9">
+        <input
+          ng-model="domain.code"
+          pattern="^[a-z]+[a-z0-9_]*$"
+          parsley-trigger="change"
+          placeholder="小写字母数字及下划线，且必须以字母开头"
+          required
+          type="text"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3 control-label">域名称</label>
+      <div class="col-md-9">
+        <input ng-model="domain.name" type="text" class="form-control"
+               required
+               validate-on="dirty"
+               ng-pattern="/^[_a-zA-Z0-9\u4e00-\u9fa5]+$/"
+               invalid-message = "'小写字母数字及下划线，且必须以字母开头'"
+               required-message = "'必填'"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3 control-label">状态</label>
+      <div class="col-md-9">
+        <select ng-model="domain.status" class="form-control">
+          <option value="1">启用</option>
+          <option value="0">禁用</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3 control-label">备注</label>
+      <div class="col-md-9">
+        <textarea ng-model="domain.remark"  class="form-control" rows="5"></textarea>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- domain authority assignment -->
+  <div class="col-md-6" style="padding-left: 30px;">
+
+    <h4 style="text-align: center; margin-bottom: 25px;">域权限分配</h4>
+
+    <xc-auth-resource-tree auth-arry="artAuthArry" resource-ids="artResourceIds" callback="artCallback"></xc-auth-resource-tree>
+
+
+  </div>
+
+
+</div>
+
+
+<div class="row" style="text-align: center;">
+  <hr />
+  <button ng-disabled="xhrProcessing" data-ng-click="toMain()" type="button" style="width: 130px;" class="btn btn-white m-r-5 m-b-5">取 消</button>
+  <button ng-disabled="xhrProcessing" data-ng-click="submit()" type="button" style="width: 130px;" class="btn btn-success m-r-5 m-b-5">保 存</button>
+</div>
+</form>

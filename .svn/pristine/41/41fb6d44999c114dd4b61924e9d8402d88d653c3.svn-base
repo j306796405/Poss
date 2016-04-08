@@ -1,0 +1,27 @@
+{
+  "name": "保税区",
+  "order": 2,
+
+  "entry_dependencies": [
+    "GET /productbg/ftz",
+    "GET /productbg/ftz/{ftzId}"
+  ],
+
+  "events": [
+    {
+      "code": "ftz-create",
+      "name": "添加保税区",
+      "dependencies": [
+        "POST /productbg/ftz"
+      ]
+    },
+    {
+      "code": "ftz-modify",
+      "name": "编辑保税区",
+      "dependencies": [
+        "PUT /productbg/ftz/{ftzId}"
+      ]
+    }
+  ]
+
+}

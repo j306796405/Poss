@@ -1,0 +1,27 @@
+{
+  "name": "主打分类",
+  "order": 6,
+
+  "entry_dependencies": [
+    "GET /productbg/productsetting/main-catalogs",
+    "GET /productbg/productsetting/main-catalogs/{catalogId}"
+  ],
+
+  "events": [
+    {
+      "code": "main-catalog-create",
+      "name": "添加主打分类",
+      "dependencies": [
+        "POST /productbg/productsetting/main-catalogs"
+      ]
+    },
+    {
+      "code": "main-catalog-modify",
+      "name": "编辑主打分类",
+      "dependencies": [
+        "PUT /productbg/productsetting/main-catalogs/{catalogId}"
+      ]
+    }
+  ]
+
+}

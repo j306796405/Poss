@@ -1,0 +1,112 @@
+<div data-ng-controller="auth.domain.MainController" >
+
+  <div id="mainView">
+    <!-- begin row -->
+    <div class="row">
+
+      <div class="col-md-2">
+        <form name="filterForm">
+          <fieldset>
+            <div class="form-group">
+              <label>按 名称</label>
+              <input data-ng-model="filter.name" type="text" class="form-control" placeholder="模糊匹配" />
+            </div>
+            <div class="form-group">
+              <label>按 编码</label>
+              <input data-ng-model="filter.code" type="text" class="form-control" placeholder="模糊匹配" />
+            </div>
+            <div class="form-group">
+              <label>按 状态</label>
+              <select data-ng-model="filter.status" class="form-control">
+                <option value="" selected>全部</option>
+                <option value="1">启用</option>
+                <option value="0">禁用</option>
+              </select>
+            </div>
+            <button ng-disabled="xhrProcessing" data-ng-click="listData()" class="btn btn-sm btn-primary">查 询</button>
+          </fieldset>
+        </form>
+      </div>
+
+      <!-- begin col-12 -->
+      <div class="col-md-10">
+
+        <button data-ng-click="toCreateDomain()" data-ng-disabled="xhrProcessing" type="button" class="btn btn-primary m-r-5 m-b-5">创 建 域</button>
+
+        <!-- begin panel -->
+        <div class="panel panel-inverse" style="margin-top: 10px;">
+
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table id="data-table" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                  <th style="width: 50px;">@id</th>
+                  <th>域编码</th>
+                  <th>域名</th>
+                  <th>状态</th>
+                  <th style="width: 90px;"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="item in collection" class="odd gradeX">
+                  <td style="text-align: center; font-weight: bold;">{{ item.id }}</td>
+                  <td><a href="javascript:;" data-ng-click="toDomainDetail(item.id)">{{ item.code }}</a></td>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.status == '1' ? '启用' : '禁用' }}</td>
+                  <td>
+                    <button data-ng-disabled="xhrProcessing" ng-click="removeConfirm(item.id)" style="margin-left: 10px;" class="btn btn-danger btn-xs" ng-hide="item.type == '9'">删 除</button></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- end panel -->
+
+        <xc-pagination xhr-processing="xhrProcessing" pagination="pagination" />
+
+      </div>
+      <!-- end col-12 -->
+
+    </div>
+    <!-- end row -->
+
+
+    <!-- modal: remove data confirm -->
+    <div class="modal fade" id="modal-alert">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">请确认该操作</h4>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-danger m-b-0">
+              <h4><i class="fa fa-info-circle"></i> 您正要删除域</h4>
+              <p>删除域将同时删除该域下的所有用户和角色.</p>
+              <p>请输入大写 <b>DELETE</b> 并点击确认删除.</p>
+              <input
+                ng-model="assist.confirmDelete"
+                type="text"
+                class="form-control"
+                style="border-color: #A94442;width: 100px;margin-top: 10px;font-weight: bold;color: #A94442;"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">取 消</a>
+            <button data-ng-disabled="xhrProcessing" data-ng-click="removeData();" class="btn btn-sm btn-danger" >确 认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div id="floatView" style="display:none;"><div ui-view></div></div>
+
+  <div id="floatViewLoading" class="hide"><span class="spinner"></span></div>
+
+</div>

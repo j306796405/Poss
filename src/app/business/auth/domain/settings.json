@@ -1,0 +1,13 @@
+{
+  "name": "域管理",
+  "order": 3,
+
+  "entry_dependencies": [
+    "GET /system/domains",
+    "GET /system/domains/{domainId}",
+    "POST /system/domains",
+    "PUT /system/domains/{domainId}",
+    "DELETE /system/domains/{domainId}"
+  ]
+
+}

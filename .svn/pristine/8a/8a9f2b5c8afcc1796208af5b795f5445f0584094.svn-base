@@ -1,0 +1,27 @@
+{
+  "name": "属性列表",
+  "order": 2,
+
+  "entry_dependencies": [
+    "GET /productbg/productsetting/attributes",
+    "GET /productbg/productsetting/attributes/{attrId}"
+  ],
+
+  "events": [
+    {
+      "code": "attr-create",
+      "name": "添加属性",
+      "dependencies": [
+        "POST /productbg/productsetting/attributes"
+      ]
+    },
+    {
+      "code": "attr-modify",
+      "name": "编辑属性",
+      "dependencies": [
+        "PUT /productbg/productsetting/attributes/{attrId}"
+      ]
+    }
+  ]
+
+}

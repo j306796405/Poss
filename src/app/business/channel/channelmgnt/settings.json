@@ -1,0 +1,27 @@
+{
+  "name": "渠道管理",
+  "order": 1,
+
+  "entry_dependencies": [
+    "GET /channelbg/channels",
+    "GET /channelbg/channels/{channelId}"
+  ],
+
+  "events": [
+    {
+      "code": "channel-create",
+      "name": "添加渠道",
+      "dependencies": [
+        "POST /channelbg/channels"
+      ]
+    },
+    {
+      "code": "channel-modify",
+      "name": "编辑渠道",
+      "dependencies": [
+        "PUT /channelbg/channels/{channelId}"
+      ]
+    }
+  ]
+
+}

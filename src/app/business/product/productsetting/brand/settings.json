@@ -1,0 +1,27 @@
+{
+  "name": "品牌列表",
+  "order": 5,
+
+  "entry_dependencies": [
+    "GET /productbg/productsetting/brands",
+    "GET /productbg/productsetting/brands/{brandId}"
+  ],
+
+  "events": [
+    {
+      "code": "brand-create",
+      "name": "添加品牌",
+      "dependencies": [
+        "POST /productbg/productsetting/brands"
+      ]
+    },
+    {
+      "code": "brand-modify",
+      "name": "编辑品牌",
+      "dependencies": [
+        "PUT /productbg/productsetting/brands/{brandId}"
+      ]
+    }
+  ]
+
+}

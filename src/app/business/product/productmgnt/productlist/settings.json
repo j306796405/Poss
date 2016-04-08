@@ -1,0 +1,10 @@
+{
+  "name": "商品列表",
+  "order": 1,
+
+  "entry_dependencies": [
+    "GET /productbg/productlist/products",
+    "GET /productbg/productlist/products/{productId}"
+  ]
+
+}

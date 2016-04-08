@@ -1,0 +1,27 @@
+{
+  "name": "规格列表",
+  "order": 1,
+
+  "entry_dependencies": [
+    "GET /productbg/productsetting/specifications",
+    "GET /productbg/productsetting/specifications/{specId}"
+  ],
+
+  "events": [
+    {
+      "code": "spec-create",
+      "name": "添加规格",
+      "dependencies": [
+        "POST /productbg/productsetting/specifications"
+      ]
+    },
+    {
+      "code": "spec-modify",
+      "name": "编辑规格",
+      "dependencies": [
+        "PUT /productbg/productsetting/specifications/{specId}"
+      ]
+    }
+  ]
+
+}

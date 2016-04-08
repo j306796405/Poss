@@ -1,0 +1,29 @@
+{
+  "name": "商品上下架",
+  "order": 2,
+
+  "entry_dependencies": [
+    "GET /productbg/productupdown/products",
+    "GET /productbg/productupdown/products/{productId}"
+  ],
+
+  "events": [
+    {
+      "code": "up-audit",
+      "name": "上架审核",
+      "dependencies": [
+        "PUT /productbg/productupdown/products/{productId}/up/resolve",
+        "PUT /productbg/productupdown/products/{productId}/up/reject"
+      ]
+    },
+    {
+      "code": "down-audit",
+      "name": "下架审核",
+      "dependencies": [
+        "PUT /productbg/productupdown/products/{productId}/down/resolve",
+        "PUT /productbg/productupdown/products/{productId}/down/reject"
+      ]
+    }
+  ]
+
+}

@@ -1,0 +1,15 @@
+{
+  "name": "用户管理",
+  "order": 1,
+
+  "entry_dependencies": [
+    "GET /system/domains/{domainId}/users",
+    "POST /system/domains/{domainId}/users",
+    "GET /system/domains/{domainId}/users/{userId}",
+    "PUT /system/domains/{domainId}/users/{userId}",
+    "DELETE /system/domains/{domainId}/users/{userId}"
+  ],
+
+  "events": []
+
+}

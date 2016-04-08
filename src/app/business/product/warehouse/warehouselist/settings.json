@@ -1,0 +1,27 @@
+{
+  "name": "仓库列表",
+  "order": 1,
+
+  "entry_dependencies": [
+    "GET /productbg/warehouses",
+    "GET /productbg/warehouses/{houseId}"
+  ],
+
+  "events": [
+    {
+      "code": "warehouse-create",
+      "name": "添加仓库",
+      "dependencies": [
+        "POST /productbg/warehouses"
+      ]
+    },
+    {
+      "code": "warehouse-modify",
+      "name": "编辑仓库",
+      "dependencies": [
+        "PUT /productbg/warehouses/{houseId}"
+      ]
+    }
+  ]
+
+}

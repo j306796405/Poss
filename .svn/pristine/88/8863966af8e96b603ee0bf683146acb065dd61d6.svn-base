@@ -1,0 +1,25 @@
+<div class="row role-assignment-area">
+
+  <!-- assigned -->
+  <div class="col-md-6">
+
+    <p style="text-align: center;font-size: 13px;font-weight: bold;color: #000;"><span style="font-size: 15px;" class="fa fa-eye"></span> 已分配角色</p>
+
+    <ul id="roleAssignedList" style="list-style-type: none; padding: 5px;">
+
+    </ul>
+
+  </div>
+
+  <!-- unassigned -->
+  <div class="col-md-6">
+
+    <p style="text-align: center;font-size: 13px;font-weight: bold;color: #000;"><span style="font-size: 15px;" class="fa fa-eye-slash"></span> 未分配角色</p>
+
+    <ul id="roleUnassignedList" style="list-style-type: none; padding: 5px;">
+
+    </ul>
+
+  </div>
+
+</div>

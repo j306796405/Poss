@@ -1,0 +1,109 @@
+<form name="userCreateForm" class="form-horizontal" parsley-validate>
+  <div class="row">
+
+    <!-- domain basic info -->
+    <div class="col-md-6" style="padding-right: 30px;">
+
+      <h4 style="text-align: center; margin-bottom: 25px;">用户基本信息</h4>
+
+      <div class="form-group">
+        <label class="col-md-3 control-label">所属域</label>
+        <div class="col-md-9">
+          <select
+            ng-model="domain"
+            class="form-control"
+            ng-options="option.name for option in domainSelectOptions track by option.id"
+            ng-change="onDomainChange"
+            required
+          ></select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-3 control-label">类型</label>
+        <div class="col-md-9">
+          <select
+            ng-model="user.type"
+            class="form-control"
+            required
+          >
+            <option value="1">普通用户</option>
+            <option value="8">域管理员</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-3 control-label">登录名</label>
+        <div class="col-md-9">
+          <input
+            ng-model="user.login_name"
+            type="text"
+            class="form-control"
+            pattern="^[a-z]+[a-z0-9_]+$"
+            parsley-trigger="change"
+            placeholder="由小写英文字母下划线及数字组成,且必须以字母开头"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-3 control-label">密码</label>
+        <div class="col-md-9">
+          <input
+            ng-model="user.password"
+            type="password"
+            class="form-control"
+            pattern="^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]+$"
+            parsley-trigger="change"
+            placeholder="由数字字母及特殊字符(~!@#$%^&*.)组成"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-3 control-label">姓名</label>
+        <div class="col-md-9">
+          <input
+            ng-model="user.name"
+            type="text"
+            class="form-control"
+            pattern="^[_a-zA-Z0-9\u4e00-\u9fa5]+$"
+            parsley-trigger="change"
+            placeholder="由英文字母数字及中文组成"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">备注</label>
+        <div class="col-md-9">
+          <textarea ng-model="role.remark"  class="form-control" rows="5"></textarea>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- domain authority assignment -->
+    <div class="col-md-6" style="padding-left: 30px;">
+
+      <h4 style="text-align: center; margin-bottom: 25px;">用户角色分配</h4>
+
+      <xc-role-assignment role-arry="roRoleArry" role-ids="roRoleIds" callback="roCallback"></xc-role-assignment>
+
+
+    </div>
+
+
+  </div>
+
+
+  <div class="row" style="text-align: center;">
+    <hr />
+    <button ng-disabled="xhrProcessing" data-ng-click="toMain()" type="button" style="width: 130px;" class="btn btn-white m-r-5 m-b-5">取 消</button>
+    <button ng-disabled="xhrProcessing" data-ng-click="submit()" style="width: 130px;" class="btn btn-success m-r-5 m-b-5">保 存</button>
+  </div>
+</form>

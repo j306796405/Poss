@@ -1,0 +1,82 @@
+<form name="roleDetailForm" class="form-horizontal" parsley-validate>
+<div class="row">
+
+  <!-- domain basic info -->
+  <div class="col-md-6" style="padding-right: 30px;">
+
+    <h4 style="text-align: center; margin-bottom: 25px;">角色基本信息</h4>
+
+    <div class="form-group">
+      <label class="col-md-3 control-label">所属域</label>
+      <div class="col-md-9">
+        <span>{{ role.domain.name }}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-3 control-label">角色编码</label>
+      <div class="col-md-9">
+        <input
+          ng-model="role.code"
+          type="text"
+          class="form-control"
+          pattern="^ROLE_[a-zA-Z0-9_]+$"
+          parsley-trigger="change"
+          placeholder="由英文字母下划线及数字组成,且必须以'ROLE_'开头"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3 control-label">角色名称</label>
+      <div class="col-md-9">
+        <input
+          ng-model="role.name"
+          type="text"
+          class="form-control"
+          pattern="^[_a-zA-Z0-9\u4e00-\u9fa5]+$"
+          parsley-trigger="change"
+          placeholder="由英文字母数字及中文组成"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3 control-label">状态</label>
+      <div class="col-md-9">
+        <select ng-model="role.status" class="form-control">
+          <option value="1">启用</option>
+          <option value="0">禁用</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3 control-label">备注</label>
+      <div class="col-md-9">
+        <textarea ng-model="role.remark"  class="form-control" rows="5"></textarea>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- domain authority assignment -->
+  <div class="col-md-6" style="padding-left: 30px;">
+
+    <h4 style="text-align: center; margin-bottom: 25px;">角色权限分配</h4>
+
+    <xc-auth-resource-tree auth-arry="artAuthArry" resource-ids="artResourceIds" callback="artCallback"></xc-auth-resource-tree>
+
+
+  </div>
+
+
+</div>
+
+
+<div class="row" style="text-align: center;">
+  <hr />
+  <button ng-disabled="xhrProcessing" data-ng-click="toMain()" type="button" style="width: 130px;" class="btn btn-white m-r-5 m-b-5">取 消</button>
+  <button ng-disabled="xhrProcessing" data-ng-click="submit()" type="button" style="width: 130px;" class="btn btn-success m-r-5 m-b-5">保 存</button>
+</div>
+</form>

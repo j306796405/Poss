@@ -1,0 +1,133 @@
+<!-- begin #header -->
+<div id="header" class="header navbar navbar-default navbar-fixed-top navbar-inverse">
+  <!-- begin container-fluid -->
+  <div class="container-fluid">
+    <!-- begin mobile sidebar expand / collapse button -->
+    <div class="navbar-header">
+      <a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> POSS</a>
+      <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <!-- end mobile sidebar expand / collapse button -->
+
+
+      <!-- begin header navigation right -->
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown navbar-user">
+        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+          <img src="assets/images/user-80.png" alt=""/>
+          <span class="hidden-xs">{{ session.name }}</span> <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu animated fadeInLeft">
+          <li class="arrow"></li>
+          <li><a href="javascript:;" data-ng-click="main.openModifyPasswordDialog()">修改密码</a></li>
+          <li class="divider"></li>
+          <li><a href="javascript:;" data-ng-click="main.signOut()">注销</a></li>
+        </ul>
+      </li>
+    </ul>
+    <!-- end header navigation right -->
+  </div>
+  <!-- end container-fluid -->
+</div>
+<!-- end #header -->
+
+<xc-main-side-bar></xc-main-side-bar>
+
+<!-- begin #content -->
+<div id="content" class="content">
+
+  <!-- begin breadcrumb -->
+  <ol class="breadcrumb pull-right">
+    <li>{{ activeMenu.name }}</li>
+    <li>{{}}</li>
+  </ol>
+  <!-- end breadcrumb -->
+  <!-- begin page-header -->
+  <h1 class="page-header">{{ activeMenu.name }} <small></small></h1>
+  <!-- end page-header -->
+
+  <div ui-view></div>
+
+</div>
+<!-- end #content -->
+
+<!-- begin scroll to top btn -->
+<!--<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i-->
+  <!--class="fa fa-angle-up"></i></a>-->
+<!-- end scroll to top btn -->
+
+
+<!-- #modal-dialog -->
+<div class="modal fade" id="modifyPasswordDialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">修改密码</h4>
+      </div>
+      <div class="modal-body">
+
+        <form class="form-horizontal" name="passwordModifyForm" parsley-validate>
+          <div class="row">
+            <!-- domain basic info -->
+            <div class="col-md-12" style="padding-right: 50px;">
+
+              <div class="form-group">
+                <label class="col-md-3 control-label">请输入原密码</label>
+                <div class="col-md-9">
+                  <input
+                    ng-model="main.passwordModification.originPassword"
+                    type="password"
+                    class="form-control"
+                    pattern="^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]+$"
+                    parsley-trigger="change"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-3 control-label">请再次输入原密码</label>
+                <div class="col-md-9">
+                  <input
+                    ng-model="main.passwordModification.retypeOriginPassword"
+                    type="password"
+                    class="form-control"
+                    pattern="^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]+$"
+                    parsley-trigger="change"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-3 control-label">请输入新密码</label>
+                <div class="col-md-9">
+                  <input
+                    ng-model="main.passwordModification.newPassword"
+                    type="password"
+                    class="form-control"
+                    pattern="^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]+$"
+                    parsley-trigger="change"
+                    placeholder="由数字字母及特殊字符(~!@#$%^&*.)组成"
+                    required
+                  />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">取消</a>
+        <a href="javascript:;" data-ng-click="main.modifyPassword()" class="btn btn-sm btn-success">修改</a>
+      </div>
+    </div>
+  </div>
+</div>

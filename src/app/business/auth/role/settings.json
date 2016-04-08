@@ -1,0 +1,15 @@
+{
+  "name": "角色管理",
+  "order": 2,
+
+  "entry_dependencies": [
+    "GET /system/domains/{domainId}/roles",
+    "POST /system/domains/{domainId}/roles",
+    "GET /system/domains/{domainId}/roles/{roleId}",
+    "PUT /system/domains/{domainId}/roles/{roleId}",
+    "DELETE /system/domains/{domainId}/roles/{roleId}"
+  ],
+
+  "events": []
+
+}

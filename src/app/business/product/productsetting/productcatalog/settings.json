@@ -1,0 +1,27 @@
+{
+  "name": "展示商品分类(前台)",
+  "order": 4,
+
+  "entry_dependencies": [
+    "GET /productbg/productsetting/front-catalogs",
+    "GET /productbg/productsetting/front-catalogs/{catalogId}"
+  ],
+
+  "events": [
+    {
+      "code": "front-catalog-create",
+      "name": "添加前台分类",
+      "dependencies": [
+        "POST /productbg/productsetting/front-catalogs"
+      ]
+    },
+    {
+      "code": "front-catalog-modify",
+      "name": "编辑前台分类",
+      "dependencies": [
+        "PUT /productbg/productsetting/front-catalogs/{catalogId}"
+      ]
+    }
+  ]
+
+}

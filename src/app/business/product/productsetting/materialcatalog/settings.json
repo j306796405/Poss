@@ -1,0 +1,27 @@
+{
+  "name": "采购商品分类(后台)",
+  "order": 3,
+
+  "entry_dependencies": [
+    "GET /productbg/productsetting/end-catalogs",
+    "GET /productbg/productsetting/end-catalogs/{catalogId}"
+  ],
+
+  "events": [
+    {
+      "code": "end-catalog-create",
+      "name": "添加采购分类",
+      "dependencies": [
+        "POST /productbg/productsetting/end-catalogs"
+      ]
+    },
+    {
+      "code": "end-catalog-modify",
+      "name": "编辑采购分类",
+      "dependencies": [
+        "PUT /productbg/productsetting/end-catalogs/{catalogId}"
+      ]
+    }
+  ]
+
+}
